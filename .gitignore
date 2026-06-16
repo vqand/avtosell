@@ -1,0 +1,19 @@
+# dependencies
+/frontend/node_modules
+/backend/vendor
+
+# env / secrets
+/backend/.env
+.env.local
+
+# build output
+/frontend/dist
+
+# uploads (keep dir, ignore contents)
+/backend/public/uploads/*
+!/backend/public/uploads/.gitkeep
+
+# logs / os
+*.log
+.DS_Store
+Thumbs.db

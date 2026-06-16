@@ -1,0 +1,14 @@
+# Route every request that is not a real file/dir to the front controller.
+RewriteEngine On
+
+# Serve existing files (e.g. uploaded images) directly.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Everything else -> index.php
+RewriteRule ^ index.php [QSA,L]
+
+# Ensure Authorization header reaches PHP (some Apache configs strip it).
+RewriteCond %{HTTP:Authorization} .
+RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
